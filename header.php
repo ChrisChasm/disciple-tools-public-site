@@ -21,6 +21,16 @@
 
             gtag('config', 'G-MDLWCZP667');
         </script>
+        <!-- Chipp Chat Widget -->
+        <script>
+          window.CHIPP_APP_URL = "https://chat.disciple.tools";
+          window.CHIPP_APP_ID = 65160;
+        </script>
+
+        <link rel="stylesheet" href="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.css" />
+
+        <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
+
 
 
         <meta charset="utf-8">
