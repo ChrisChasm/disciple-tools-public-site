@@ -21,17 +21,23 @@
 
             gtag('config', 'G-MDLWCZP667');
         </script>
-        <!-- Chipp Chat Widget -->
         <script>
-          window.CHIPP_APP_URL = "https://chat.disciple.tools";
-          window.CHIPP_APP_ID = 65160;
+          window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":"Chat with us"};
+          (function(d,t) {
+            var BASE_URL="https://chatwoot.disciple.tools";
+            var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=BASE_URL+"/packs/js/sdk.js";
+            g.defer = true;
+            g.async = true;
+            s.parentNode.insertBefore(g,s);
+            g.onload=function(){
+              window.chatwootSDK.run({
+                websiteToken: 'zsTdXWPhUPCKvEdWqgs6i7XJ',
+                baseUrl: BASE_URL
+              })
+            }
+          })(document,"script");
         </script>
-
-        <link rel="stylesheet" href="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.css" />
-
-        <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
-
-
 
         <meta charset="utf-8">
 
