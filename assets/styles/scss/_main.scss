@@ -981,3 +981,82 @@ article.type-news {
         font-size: 1rem;
     }
 }
+
+/*********************
+MODERN PAGE TEMPLATE STYLES
+*********************/
+.modern-page-template {
+    .modern-page-content {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    }
+
+    article.type-page {
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-hero-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: $global-radius;
+            margin-bottom: 1.5rem;
+
+            @media ( max-width: $breakpoint-medium ) {
+                height: 200px;
+            }
+        }
+
+        h1.page-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+
+            @media ( max-width: $breakpoint-medium ) {
+                font-size: 1.8rem;
+            }
+        }
+
+        .page-entry-content {
+            line-height: 1.7;
+
+            h2, h3, h4, h5, h6 {
+                color: $black;
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            h4 {
+                font-size: 1.25rem;
+            }
+
+            p {
+                margin-bottom: 1.25rem;
+            }
+
+            ul, ol {
+                margin-bottom: 1.25rem;
+                margin-left: 1.5rem;
+            }
+
+            blockquote {
+                border-left: 4px solid $primary-color;
+                padding-left: 1rem;
+                margin: 1.5rem 0;
+                font-style: italic;
+                color: $dark-gray;
+            }
+        }
+    }
+}
