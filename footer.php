@@ -99,6 +99,9 @@
 
         <?php wp_footer(); ?>
 
+        <script src="https://apps.gospelambition.org/js/helpinator-widget.iife.js" defer></script><?php // phpcs:ignore ?>
+        <helpinator-widget host="https://apps.gospelambition.org" widget-id="f0bcae5b-d1b4-4fcc-bc4a-b534dd4839fb"></helpinator-widget>
+
     </body>
 
 </html> <!-- end page -->

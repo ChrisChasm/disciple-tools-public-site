@@ -21,22 +21,6 @@
 
             gtag('config', 'G-MDLWCZP667');
         </script>
-        <script>
-          window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":"Chat with us"};
-          (function(d,t) {
-            var BASE_URL="https://chatwoot.disciple.tools";
-            var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=BASE_URL+"/packs/js/sdk.js";
-            g.async = true;
-            s.parentNode.insertBefore(g,s);
-            g.onload=function(){
-              window.chatwootSDK.run({
-                websiteToken: 'zsTdXWPhUPCKvEdWqgs6i7XJ',
-                baseUrl: BASE_URL
-              })
-            }
-          })(document,"script");
-        </script>
 
         <meta charset="utf-8">
 
