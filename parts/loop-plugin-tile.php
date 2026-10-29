@@ -26,9 +26,9 @@
             <p>
                 <a href="<?php echo esc_url( $permalink ) ?>" class="button">View</a>
                 <?php
-                $repo = get_post_meta( get_the_ID(), 'github_repo', true );
-                if ( $repo ) : ?>
-                    <a href="https://github.com/<?php echo esc_attr( get_post_meta( get_the_ID(), 'github_owner', true ) ) ?>/<?php echo esc_attr( $repo ) ?>/releases/latest/download/<?php echo esc_attr( $repo ) ?>.zip" class="button">Download</a>
+                list( $owner, $repo ) = dt_normalize_github_repo( get_post_meta( get_the_ID(), 'github_owner', true ), get_post_meta( get_the_ID(), 'github_repo', true ) );
+                if ( $owner && $repo ) : ?>
+                    <a href="<?php echo esc_url( 'https://github.com/' . $owner . '/' . $repo . '/releases/latest/download/' . $repo . '.zip' ) ?>" class="button">Download</a>
                 <?php endif; ?>
             </p>
         </div>

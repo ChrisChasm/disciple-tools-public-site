@@ -16,6 +16,34 @@ function dt_cached_api_call( $url ){
     return $data;
 }
 
+/**
+ * Clean up the GitHub owner and repo fields of a plugin.
+ * The repo field sometimes holds "owner/repo" or a full github.com address,
+ * which would otherwise double up in links built from the two fields.
+ *
+ * @param string $owner
+ * @param string $repo
+ * @return array [ owner, repo ]
+ */
+function dt_normalize_github_repo( $owner, $repo ){
+    $clean = function ( $value ){
+        $value = preg_replace( '#^(https?://)?(www\.)?github\.com/#i', '', trim( (string) $value ) );
+        $value = preg_replace( '#\.git$#i', '', trim( $value, '/' ) );
+        return trim( $value, '/' );
+    };
+    $owner = $clean( $owner );
+    $repo = $clean( $repo );
+
+    if ( strpos( $repo, '/' ) !== false ) {
+        $parts = explode( '/', $repo );
+        $owner = $parts[0];
+        $repo = $parts[1];
+    } elseif ( strpos( $owner, '/' ) !== false ) {
+        $owner = explode( '/', $owner )[0];
+    }
+    return [ $owner, $repo ];
+}
+
 function dt_load_github_markdown( $atts ){
     $url = null;
     extract( shortcode_atts( array( //phpcs:ignore

@@ -77,6 +77,8 @@ get_header(); ?>
                                 $string = false;
                                 if ( $post_meta['readme_url'] ) { /* If readme url is present, then the Readme markdown is used */
                                     $string = preg_replace( '/!\[Plugin Banner\]\(.*?\)/', '', dt_cached_api_call( $post_meta['readme_url'] ), 1 );
+                                    // Travis CI no longer builds these plugins, so its badges are dead links
+                                    $string = preg_replace( '/\[!\[[^\]]*\]\([^)]*travis-ci\.(com|org)[^)]*\)\]\([^)]*\)|!\[[^\]]*\]\([^)]*travis-ci\.(com|org)[^)]*\)|\[[^\]]*\]\([^)]*travis-ci\.(com|org)[^)]*\)/', '', $string );
                                 }
                                 // end check on readme existence
 
@@ -181,17 +183,12 @@ get_header(); ?>
                             </div>
 
                             <?php if ( isset( $post_meta['issues_url'] ) && ! empty( $post_meta['issues_url'] ) ) : ?>
-                                <div class="cell medium-4" style="padding-right:5px;">
+                                <div class="cell medium-6" style="padding-right:5px;">
                                    <a href="<?php echo esc_url( $post_meta['issues_url'] ) ?>" class="button primary-button-hollow expanded"> Issues</a>
                                 </div>
                             <?php endif; ?>
-                            <?php if ( isset( $post_meta['projects_url'] ) && ! empty( $post_meta['projects_url'] ) ) : ?>
-                                <div class="cell medium-4">
-                                   <a href="<?php echo esc_url( $post_meta['projects_url'] ) ?>" class="button primary-button-hollow expanded"> Projects</a>
-                                </div>
-                            <?php endif; ?>
                             <?php if ( isset( $post_meta['license_url'] ) && ! empty( $post_meta['license_url'] ) ) : ?>
-                                <div class="cell medium-4" style="padding-left:5px;">
+                                <div class="cell medium-6" style="padding-left:5px;">
                                    <a href="<?php echo esc_url( $post_meta['license_url'] ) ?>" class="button primary-button-hollow expanded"> License</a>
                                 </div>
                             <?php endif; ?>
@@ -199,7 +196,8 @@ get_header(); ?>
 
                         <hr>
 
-                        <?php if ( ! empty( $post_meta['github_owner'] ) ) : ?>
+                        <?php list( $github_owner, $github_repo ) = dt_normalize_github_repo( $post_meta['github_owner'], $post_meta['github_repo'] ); ?>
+                        <?php if ( ! empty( $github_owner ) ) : ?>
                         <h4>Version Info</h4>
                         <div class="padding-left-1">
                             <div id="current_version"></div>
@@ -209,7 +207,7 @@ get_header(); ?>
                         <div id="releases" style="display:none;"></div>
                         <script>
                             jQuery(document).ready(function(){
-                                jQuery.getJSON('https://api.github.com/repos/<?php echo esc_attr( $post_meta['github_owner'] ) ?>/<?php echo esc_attr( $post_meta['github_repo'] ) ?>/releases', function(data) {
+                                jQuery.getJSON('https://api.github.com/repos/<?php echo esc_attr( $github_owner ) ?>/<?php echo esc_attr( $github_repo ) ?>/releases', function(data) {
                                     let r = jQuery('#releases')
 
                                     r.append(`<p><h4>Past Versions</h4></p><table class="hover">
